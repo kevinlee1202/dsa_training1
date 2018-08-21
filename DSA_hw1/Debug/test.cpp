@@ -1,20 +1,19 @@
 #include <cstdio>
 #include <cstdlib>
+#include<iostream>
 #include <string>
 #include "matrix.h"
-
+using namespace std;
 void rand_gen(const Matrix& a){
 	for(int i=0; i<a.row; i++)
 		for(int j=0; j<a.col; j++)
 			a[i][j]=rand()%10;
 }
 
-int main(int argc, char* argv[]){
-	if(argc!=2){
-		printf("Usage: %s [cmd]\n", argv[0]);
-		exit(0);
-	}
-	std::string cmd(argv[1]);
+int main(){
+	
+	string cmd;
+	cin >> cmd;
 
 	if(cmd=="construct"){
 		{
@@ -40,11 +39,10 @@ int main(int argc, char* argv[]){
 		Matrix b(11, 5);
 		Matrix c(a);
 		rand_gen(a);
-		rand_gen(c);
 		b = a;
 		b.print();
-		b = c;
-		b.print();
+		c=b;
+		c.print();
 		c = b = a;
 		b.print();
 		c.print();
@@ -119,4 +117,5 @@ int main(int argc, char* argv[]){
 		b.print();
 	} else
 		puts("Unknown argument!");
+	system("PAUSE");
 }
